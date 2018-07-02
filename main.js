@@ -1,7 +1,7 @@
 var SLIDE_AUTOPLAY_SPEED = 30000;
 
 var slideNum = 1;
-var slideMax = 3;
+var slideMax = 4;
 var slideAutoplayInterval;
 
 // https://stackoverflow.com/a/25371174
