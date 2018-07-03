@@ -43,11 +43,33 @@ function slideHideAll(callback) {
 		});
 		
 		setTimeout(function() {
-			$slide.hide();		
+			$slide.hide();
 		}, 300);
+
+		$slide.find('.slideyt').each(function() {
+			var $this = $(this);
+			var player = $this.data('ytplayer');
+			if (typeof player == "undefined") return;
+			
+			var isLive = $this.data('slideytlive');
+			
+			if (isLive)	player.stopVideo();
+			else player.pauseVideo();
+		});
 	});
 
 	setTimeout(callback, 300);
+}
+
+function slideUpdateYt() {
+	var $slide = $('.slide[data-slidenum=' + slideNum + ']');
+
+	$slide.find('.slideyt').each(function() {
+		var $this = $(this);
+		var player = $this.data('ytplayer');
+		if (typeof player == "undefined") return;
+		player.playVideo();
+	});
 }
 
 function slideRefreshCurrentBgs() {
@@ -86,6 +108,7 @@ function slideRefreshCurrentBgs() {
 
 function slideShowCurrent() {
 	slideRefreshCurrentBgs();
+	slideUpdateYt();
 
 	var $slide = $('.slide[data-slidenum=' + slideNum + ']');
 	$slide.show();
@@ -149,3 +172,11 @@ $(document).ready(function() {
 		} catch(e) { }
 	});
 });
+
+function onYouTubeIframeAPIReady() {
+	$('.slideyt').each(function() {
+		var $this = $(this);
+
+		$this.data('ytplayer', new YT.Player($this[0]));
+	})
+}
