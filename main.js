@@ -1,8 +1,9 @@
 var SLIDE_AUTOPLAY_SPEED = 30000;
 
 var slideNum = 1;
-var slideMax = 4;
-var slideAutoplayInterval;
+var slideMax = 5;
+var slideAutoplayTimeout;
+var slideAutoplayPaused = false;
 
 // https://stackoverflow.com/a/25371174
 function base64Encode(str) {
@@ -61,6 +62,20 @@ function slideHideAll(callback) {
 	setTimeout(callback, 300);
 }
 
+function slideRefreshIframes() {
+	var $slide = $('.slide[data-slidenum=' + slideNum + ']');
+
+	$slide.find('.slideiframe').each(function() {
+		var $this = $(this);
+		var src = $this.attr('src');
+		$this.attr('src', 'about:blank');
+		setTimeout(function() {
+			$this.attr('src', src);
+		}, 1);
+	});
+
+}
+
 function slideUpdateYt() {
 	var $slide = $('.slide[data-slidenum=' + slideNum + ']');
 
@@ -109,9 +124,10 @@ function slideRefreshCurrentBgs() {
 function slideShowCurrent() {
 	slideRefreshCurrentBgs();
 	slideUpdateYt();
+	slideRefreshIframes();
 
 	var $slide = $('.slide[data-slidenum=' + slideNum + ']');
-	$slide.show();
+	$slide.css('display', 'flex');
 
 	// timeout used to prevent css transition from being skipped
 	setTimeout(function() {
@@ -126,57 +142,91 @@ function slideNext() {
 	slideNum++;
 	if (slideNum > slideMax) slideNum = 1;
 	slideHideAll(slideShowCurrent);
+	slideStartTimeout();
 }
 
 function slidePrev() {
 	slideNum--;
 	if (slideNum < 1) slideNum = slideMax;
 	slideHideAll(slideShowCurrent);
+	slideStartTimeout();	
 }
 
 function slidePause() {
-	clearInterval(slideAutoplayInterval);
-	slideAutoplayInterval = undefined;
+	slideAutoplayPaused = true;
+
+	slideStopTimeout();
 	$("#pause").hide();
 	$("#play").show();
 }
 
 function slidePlay() {
-	slideAutoplayInterval = setInterval(
-		slideNext, SLIDE_AUTOPLAY_SPEED
-	);
+	slideAutoplayPaused = false;
+	
+	slideStartTimeout();
 	$("#pause").show();
 	$("#play").hide();		
 }
 
 function slideToggle() {
-	if (slideAutoplayInterval) slidePause();
-	else slidePlay();
+	if (slideAutoplayPaused) slidePlay();
+	else slidePause();
 }
 
-$(document).ready(function() {
-	slideNum--;
-	slideNext();
-	slidePlay();
+function slideStopTimeout() {
+	clearTimeout(slideAutoplayTimeout);
+	slideAutoplayTimeout = undefined;
+}
 
-	$(document).keypress(function(e) {
-		try {
-			({
-				49: slidePrev,
-				50: slideToggle,
-				51: slideNext,
-				402: slideNext,
-				403: slidePrev,
-				13: slideToggle
-			})[e.which]();
-		} catch(e) { }
-	});
-});
+function slideStartTimeout() {
+	if (slideAutoplayPaused) return;
+
+	slideStopTimeout();
+
+	slideAutoplayTimeout = setTimeout(
+		slideNext, SLIDE_AUTOPLAY_SPEED
+	);
+}
+
+
 
 function onYouTubeIframeAPIReady() {
 	$('.slideyt').each(function() {
 		var $this = $(this);
-
 		$this.data('ytplayer', new YT.Player($this[0]));
 	})
 }
+
+function initIdle() {
+	$(document).idle({
+		onIdle: function () {
+			$('body').css('cursor', 'none');
+			$('#controls').css('opacity', 0);
+		},
+		onActive: function () {
+			$('body').css('cursor', '');
+			$('#controls').css('opacity', '');
+		},
+		idle: 5000
+	});
+}
+
+function initKeys() {
+	$(document).keypress(function(e) {
+		try {
+			({
+				37: slidePrev, // left
+				32: slideToggle, // space
+				13: slideToggle, // enter
+				39: slideNext, // right
+			})[e.which]();
+		} catch(e) { }
+	});
+}
+
+$(document).ready(function() {
+	slideHideAll(slideShowCurrent);
+	slidePlay();
+	initIdle();
+	initKeys();
+});

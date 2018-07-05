@@ -1,78 +1,100 @@
 <!DOCTYPE html>
 <head>
 	<title>Whiteface TV</title>
-	<link rel="stylesheet" href="./style.css">
 	<script
 		src="https://code.jquery.com/jquery-3.3.1.min.js"
 		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 		crossorigin="anonymous">
 	</script>
 	<link rel="stylesheet"
+		  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+		  crossorigin="anonymous">
+	<link rel="stylesheet"
 		  href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="./style.css">
 </head>
 <body>
-	<div class="slide" data-slidenum="1">
-		<div class="tile left top slidebg bgcover"
-			 data-slidebg="http://research.asrc.albany.edu/people/staff/rbrandt/whiteface/west_cam/current.jpg">
-	 	</div>
-		<div class="tile left bottom slidebg bgcover"
-			 data-slidebg="https://wildcenter.org/summitcam/wfsummit.jpg">
+	<div class="slide row" data-slidenum="1">
+		<div class="col-6 h-100 slidebg bgcover"
+			data-slidebg="https://wildcenter.org/lodge/whitefaceview.jpg">
 		</div>
-		<div class="tile right slidebg bgcover"
-			 data-slidebg="https://wildcenter.org/lodge/whitefaceview.jpg">
-		</div>
+
+		<div class="col-6 h-100"><div class="row h-100">
+			<div class="col-12 slidebg bgcover"
+				 data-slidebg="http://research.asrc.albany.edu/people/staff/rbrandt/whiteface/west_cam/current.jpg">
+			</div>
+			<div class="col-12 slidebg bgcover"
+				 data-slidebg="https://wildcenter.org/summitcam/wfsummit.jpg">
+			</div>
+		</div></div>
 	</div>
 
-	<div class="slide" data-slidenum="2">
-		<iframe class="tile slideyt" data-slideytlive="true"
+	<div class="slide row no-gutters" data-slidenum="2">
+		<iframe class="col-12 h-100 tile slideyt" data-slideytlive="true"
 				src="https://www.youtube.com/embed/dG56gcIcq1c?enablejsapi=1&amp;rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1"
 				frameborder="0" allow="autoplay; encrypted-media">
 		</iframe>
 	</div>
 
-	<div class="slide" data-slidenum="3">
-		<div class="tile left top slidebg"
+	<div class="slide row" data-slidenum="3">
+		<div class="col-6 h-50 slidebg"
 			 data-slidebg="http://www.wpc.ncep.noaa.gov/noaa/noaa.gif">
 		</div>
-		<div class="tile left bottom slidebg"
-			 data-slidebg="https://www.spc.noaa.gov/obswx/maps/300_12.gif">
-		</div>
-		<div class="tile right top slidebg"
+		<div class="col-6 h-50 slidebg"
 			 data-slidebg="http://research.asrc.albany.edu/observatories/whiteface/summit_met_rtmp/WFSmet.jpeg">
 		</div>
-		<div class="tile right bottom slidebg"
+		<div class="col-6 h-50 slidebg"
+			 data-slidebg="https://www.spc.noaa.gov/obswx/maps/300_12.gif">
+		</div>
+		<div class="col-6 h-50 slidebg"
 			 data-slidebg="https://radar.weather.gov/Conus/Loop/northeast_loop.gif">
 		</div>
 	</div>
 
-	<div class="slide" data-slidenum="4">
-		<div class="tile slidebg"
+	<div class="slide row" data-slidenum="4">
+		<div class="col-12 h-100 slidebg"
 			 data-slidebg="https://radar.weather.gov/Conus/Loop/NatLoop.gif">
 		</div>
 	</div>
 
-	<div id="controls">
-		<i onclick="slidePrev()"
-		   class="material-icons">
-		   navigate_before
- 		</i>
+	<div class="slide row" data-slidenum="5">
+		<iframe class="col-12 h-100"
+				frameborder="0"
+				src="http://nysmesonet.org/mesonow#?stid=WFMB">
+		</iframe>
 
-		<i id="play" onclick="slidePlay()"
-		   class="material-icons">
-		   play_circle_filled
-		</i>
-		
-		<i id="pause" onclick="slidePause()"
-		   class="material-icons">
-		   pause_circle_filled
-		</i>
-
-		<i onclick="slideNext()"
-		   class="material-icons">
-		   navigate_next
-		</i>
 	</div>
 
-	<script async src="https://www.youtube.com/iframe_api"></script>
+	<div id="corner">
+		<div id="controls">
+			<i onclick="slidePrev()"
+			   class="material-icons">
+			   navigate_before
+			 </i>
+	
+			<i id="play" onclick="slidePlay()"
+			   class="material-icons">
+			   play_circle_filled
+			</i>
+			
+			<i id="pause" onclick="slidePause()"
+			   class="material-icons">
+			   pause_circle_filled
+			</i>
+	
+			<i onclick="slideNext()"
+			   class="material-icons">
+			   navigate_next
+			</i>
+		</div>
+
+		<img id="arsclogo"
+			 src="./img/asrc-logo-bw.svg" />
+	</div>
+
+
+	<script src="https://www.youtube.com/iframe_api"></script>
+	<script src="./jquery.idle.min.js"></script>
 	<script src="./main.js"></script>
 </body>
