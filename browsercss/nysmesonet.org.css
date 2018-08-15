@@ -1,0 +1,33 @@
+/* nysmesonet.org */
+
+.navbar, #about, .title-divider, .price, .row.pricing-stack:nth-child(3), #footer {
+    display: none !important;
+}
+
+.row.pricing-stack {
+    position: absolute;
+    margin: 0;
+    padding-top: 16px;
+}
+
+.row.pricing-stack:nth-child(1) {
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 50vw;
+}
+
+.row.pricing-stack:nth-child(1) > .col-md-6 {
+    width: 50vw;
+}
+
+.row.pricing-stack:nth-child(4) {
+    left: 50vw;
+    top: 0;
+    height: 100vh;
+    width: 50vw;
+}
+
+.row.pricing-stack:nth-child(4) h4 {
+    display: none;
+}

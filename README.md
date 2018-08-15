@@ -12,6 +12,21 @@
 3. ```cd whiteface-tv```
 4. ```chmod u+rwx,g-rwx,o-rwx .git```
 
+### Browser CSS
+
+Some embedded sites may look wrong without custom CSS for them. To fix this:
+
+1. Install [Stylus](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne) (or a similar custom CSS extension).
+2. Click on the new Stylus button in the toolbar and then click "Manage".
+3. For each of the files in the "browsercss" folder of this repository:
+    3.1. Select "Write New Style" in Stylus.
+    3.2. Paste the contents of the file into the large "Code" box.
+    3.3. Below the "Code" box, there should be something that says "Applies to Everything" with a plus symbol next to it. Click the plus symbol.
+    3.4. Change "URL" to "URLs on the domain".
+    3.5. In the box next to that, paste the filename WITHOUT the ".css" at the end.
+        - e.g. If the filename is "blitzortung.org.css" you should only paste "blitzortung.org" (without the quotes).
+    3.6. In the top left, name the style whatever you'd like and click save.
+
 ## Note
 
 If some images don't show up, make sure they are hosted on the same server as this site.

@@ -48,3 +48,7 @@ html, body, .slide {
 	bottom: 0;
 	left: 16px;
 }
+.nopadding {
+	padding: 0 !important;
+	margin: 0 !important;
+}

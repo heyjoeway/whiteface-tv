@@ -15,6 +15,9 @@
 	<link rel="stylesheet" href="./style.css">
 </head>
 <body>
+
+	<!-- Begin slide content -->
+
 	<div class="slide row" data-slidenum="1">
 		<div class="col-6 h-100"><div class="row h-100">
 			<div class="col-12 slidebg bgcover"
@@ -40,18 +43,27 @@
 	</div>
 
 	<div class="slide row" data-slidenum="3">
-		<div class="col-6 h-50 slidebg"
+		<div class="col-4 h-50 slidebg"
 			 data-slidebg="http://www.wpc.ncep.noaa.gov/noaa/noaa.gif">
 		</div>
-		<div class="col-6 h-50 slidebg"
+		<div class="col-4 h-50 slidebg"
 			 data-slidebg="http://research.asrc.albany.edu/observatories/whiteface/summit_met_rtmp/WFSmet.jpeg">
 		</div>
-		<div class="col-6 h-50 slidebg"
+		<iframe class="col-4 h-50 nopadding slideiframe"
+				frameborder="0"
+				src="https://embed.windy.com/embed2.html?lat=42.812&lon=-76.289&zoom=6&level=surface&overlay=wind&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&detailLat=42.262&detailLon=-71.803&metricWind=default&metricTemp=default&radarRange=-1">
+		</iframe>
+
+		<div class="col-4 h-50 slidebg"
 			 data-slidebg="https://www.spc.noaa.gov/obswx/maps/300_12.gif">
 		</div>
-		<div class="col-6 h-50 slidebg"
+		<div class="col-4 h-50 slidebg"
 			 data-slidebg="https://radar.weather.gov/Conus/Loop/northeast_loop.gif">
 		</div>
+		<iframe class="col-4 h-50 nopadding"
+				frameborder="0"
+				src="http://en.blitzortung.org/live_lightning_maps.php?map=33">
+		</iframe>
 	</div>
 
 	<div class="slide row" data-slidenum="4">
@@ -61,12 +73,21 @@
 	</div>
 
 	<div class="slide row no-gutters" data-slidenum="5">
-		<iframe class="col-12 h-100"
+		<iframe class="col-12 h-100 slideiframe"
 				frameborder="0"
 				src="http://nysmesonet.org/mesonow#?stid=WFMB">
 		</iframe>
-
 	</div>
+
+	<div class="slide row no-gutters" data-slidenum="6">
+		<iframe class="col-12 h-100 slideiframe"
+				frameborder="0"
+				src="http://operations.nysmesonet.org/~nbain/cam/viewer/#layout=1x1&speed=368&stid_00=WFMB&blur=true&label_size=medium&vis=hide">
+		</iframe>
+	</div>
+
+	<!-- Below this point are the controls and the ASRC logo.
+		 You shouldn't need to edit this if you just want to add content. -->
 
 	<div id="corner">
 		<div id="controls">
@@ -93,7 +114,6 @@
 
 		<img id="arsclogo" src="./img/logo.svg" />
 	</div>
-
 
 	<script src="https://www.youtube.com/iframe_api"></script>
 	<script src="./jquery.idle.min.js"></script>

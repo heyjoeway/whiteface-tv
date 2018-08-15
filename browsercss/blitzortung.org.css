@@ -1,0 +1,13 @@
+/* blitzortung.org */
+
+#nav, #motd, .control_left {
+    display: none !important;
+}
+
+#main_frame, #map {
+    padding: 0;
+}
+
+html, body {
+    overflow: hidden;
+}
