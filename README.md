@@ -10,7 +10,7 @@
 1. Go to folder where you want to host this site.
 2. ```git clone https://github.com/Joseph14078/whiteface-tv```
 3. ```cd whiteface-tv```
-4. ```chmod u+rwx,g-rwx,o-rwx .git```
+4. ```chmod -R u+rwx,g-rwx,o-rwx .git```
 
 ### Browser CSS
 
