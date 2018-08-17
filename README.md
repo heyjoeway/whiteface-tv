@@ -24,7 +24,7 @@ Some embedded sites may look wrong without custom CSS for them. To fix this:
     3. Below the "Code" box, there should be something that says "Applies to Everything" with a plus symbol next to it. Click the plus symbol.
     4. Change "URL" to "URLs on the domain".
     5. In the box next to that, paste the filename WITHOUT the ".css" at the end.
-        - e.g. If the filename is "blitzortung.org.css" you should only paste "blitzortung.org" (without the quotes).
+        - e.g. If the filename is "nysmesonet.org.css" you should only paste "nysmesonet.org" (without the quotes).
     6. In the top left, name the style whatever you'd like and click save.
 
 ## Note
