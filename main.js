@@ -144,7 +144,7 @@ function slideRefreshIframes() {
 		$this.attr('src', 'about:blank');
 		setTimeout(function() {
 			$this.attr('src', src);
-		}, 1);
+		}, 10);
 	});
 
 }
@@ -261,8 +261,6 @@ function slideStartTimeout() {
 	);
 }
 
-
-
 function onYouTubeIframeAPIReady() {
 	$('.slideyt').each(function() {
 		var $this = $(this);
@@ -285,7 +283,7 @@ function initIdle() {
 }
 
 function initKeys() {
-	$(document).keypress(function(e) {
+	$(document).keydown(function(e) {
 		try {
 			({
 				37: slidePrev, // left
