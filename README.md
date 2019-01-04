@@ -34,6 +34,8 @@ Some embedded sites may look wrong without custom CSS for them. To fix this:
 If some images don't show up, make sure they are hosted on the same server as this site.
 For more information, read up on CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 
+Also, if hosting the website as https, some iframe pages may fail to load due to being http. That's why the github.io link given isn't fully functional and should only be used for testing.
+
 ## License
 
 MIT
