@@ -1,6 +1,6 @@
 # whiteface-tv
 
-https://joseph14078.github.io/whiteface-tv/
+https://heyjoeway.github.io/whiteface-tv/
 
 ## Dependencies
 
